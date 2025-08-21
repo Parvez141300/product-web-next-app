@@ -3,7 +3,21 @@
   themes: light --default, night;
 }
 
-
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #ea8519;
+  --color-secondary: #7df275;
+  --color-accent: #49ee8e;
+  --color-base-100: #fef8f2;
+}
+@plugin "daisyui/theme" {
+  name: "night";
+  --color-primary: #e58015;
+  --color-secondary: #158c0d;
+  --color-accent: #11b656;
+  --color-base-100: #0e0801;
+}
 
 :root {
   font-family: Arial, Helvetica, sans-serif;

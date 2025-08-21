@@ -1,6 +1,8 @@
+
 import Link from "next/link";
 import React from "react";
 import Button from "../Button/Button";
+import ThemeToggle from "./shared/ThemeToggle";
 
 const NavBar = () => {
   const links = (
@@ -41,21 +43,22 @@ const NavBar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">EasyPro</a>
+        <Link href={'/'} className="btn btn-ghost text-xl px-0">EasyPro</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-2">
+        {/* theme toggle */}
+        <ThemeToggle></ThemeToggle>
+        {/* authentication links */}
         <Link href={"/login"}>
           <Button className={"btn-primary btn-outline rounded-lg"}>
             Login
           </Button>
         </Link>
         <Link href={"/register"}>
-          <Button className={"btn-primary rounded-lg"}>
-            Register
-          </Button>
+          <Button className={"btn-primary rounded-lg"}>Register</Button>
         </Link>
       </div>
     </div>
