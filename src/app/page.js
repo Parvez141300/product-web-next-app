@@ -1,10 +1,10 @@
 import Image from "next/image";
+import Banner from "./Home/Banner/Banner";
 
 export default function Home() {
   return (
     <div className="">
-      product
-      <button className="btn btn-primary">Button</button>
+      <Banner></Banner>
     </div>
   );
 }
