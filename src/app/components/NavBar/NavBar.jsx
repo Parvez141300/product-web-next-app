@@ -4,6 +4,7 @@ import React from "react";
 import Button from "../Button/Button";
 import ThemeToggle from "./shared/ThemeToggle";
 import { usePathname } from "next/navigation";
+import LoginButton from "../LoginButton";
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ const NavBar = () => {
         <Link href={"/products"}>Products</Link>
       </li>
       <li>
-        <a>Dashboard</a>
+        <Link href={'/user-dashboard'}>Dashboard</Link>
       </li>
     </>
   );
@@ -65,11 +66,7 @@ const NavBar = () => {
           {/* theme toggle */}
           <ThemeToggle></ThemeToggle>
           {/* authentication links */}
-          <Link href={"/login"}>
-            <Button className={"btn-primary btn-outline rounded-lg"}>
-              Login
-            </Button>
-          </Link>
+          <LoginButton></LoginButton>
           <Link href={"/register"}>
             <Button className={"btn-primary rounded-lg"}>Register</Button>
           </Link>

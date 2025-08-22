@@ -21,25 +21,24 @@ const AddProduct = () => {
         body: JSON.stringify(formInfo),
       });
 
-      if(res.ok){
+      if (res.ok) {
         Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Successfully added the product",
-            showConfirmButton: false,
-            timer: 1500
-          });
-      }
-      else{
+          position: "center",
+          icon: "success",
+          title: "Successfully added the product",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setLoading(false);
+      } else {
         Swal.fire({
-            position: "center",
-            icon: "error",
-            title: 'Error to add product',
-            showConfirmButton: false,
-            timer: 1500
-          });
+          position: "center",
+          icon: "error",
+          title: "Error to add product",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
-      setLoading(false);
     } catch (error) {
       setError("Failed to do add product");
       Swal.fire({
@@ -47,7 +46,7 @@ const AddProduct = () => {
         icon: "error",
         title: `${error.message}`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       });
     }
   };

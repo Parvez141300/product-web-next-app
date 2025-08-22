@@ -1,7 +1,15 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 
 const Register = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const formInfo = Object.fromEntries(formData);
+    console.log(formInfo);
+  };
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">
@@ -16,25 +24,38 @@ const Register = () => {
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
-              <fieldset className="fieldset">
+              <form onSubmit={handleRegister} className="fieldset">
                 <label className="label">Name</label>
-                <input type="text" className="input" placeholder="Name" />
-                <label className="label">Photo Url</label>
-                <input type="url" className="input" placeholder="photo url" />
+                <input
+                  name="name"
+                  type="text"
+                  className="input"
+                  placeholder="Name"
+                />
                 <label className="label">Email</label>
-                <input type="email" className="input" placeholder="Email" />
+                <input
+                  name="email"
+                  type="email"
+                  className="input"
+                  placeholder="Email"
+                />
                 <label className="label">Password</label>
                 <input
+                  name="password"
                   type="password"
                   className="input"
                   placeholder="Password"
                 />
                 <div>
                   Already Have an account?
-                  <Link href={'/register'} className="link link-hover">Login</Link>
+                  <Link href={"/register"} className="link link-hover">
+                    Login
+                  </Link>
                 </div>
-                <button className="btn btn-neutral mt-4">Register</button>
-              </fieldset>
+                <button type="submit" className="btn btn-neutral mt-4">
+                  Register
+                </button>
+              </form>
               <div className="divider">OR</div>
               {/* Google */}
               <button className="btn bg-white text-black border-[#e5e5e5]">
