@@ -1,5 +1,5 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.MONGODB_URI
+import { MongoClient, ServerApiVersion } from 'mongodb'
+const uri = process.env.NEXT_PUBLIC_MONGODB_URI
 
 function dbConnect(collectionName) {
     const client = new MongoClient(uri, {

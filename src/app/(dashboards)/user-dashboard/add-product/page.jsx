@@ -1,6 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+// export const dynamic = "force-dynamic";
+
+
 
 const AddProduct = () => {
   const [loading, setLoading] = useState(false);

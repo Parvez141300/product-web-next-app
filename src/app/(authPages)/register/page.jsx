@@ -1,14 +1,41 @@
 "use client";
+import { registerUser } from "@/app/actions/auth/registerUser";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const handleRegister = (e) => {
+  const router = useRouter()
+  // register by name, email, password
+  const handleRegister = async(e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const formInfo = Object.fromEntries(formData);
-    console.log(formInfo);
+    const payload = Object.fromEntries(formData);
+    payload.role = 'user'
+    console.log(payload);
+    const res = await registerUser(payload)
+    console.log(res);
+    if(res.insertedId){
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Successfully Registered",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      router.push('/');
+    }
+    else{
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "We already have this user in database",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   };
   return (
     <div>
@@ -25,13 +52,6 @@ const Register = () => {
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
               <form onSubmit={handleRegister} className="fieldset">
-                <label className="label">Name</label>
-                <input
-                  name="name"
-                  type="text"
-                  className="input"
-                  placeholder="Name"
-                />
                 <label className="label">Email</label>
                 <input
                   name="email"

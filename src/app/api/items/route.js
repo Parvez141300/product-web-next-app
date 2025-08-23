@@ -1,10 +1,12 @@
 import dbConnect from "@/lib/dbConnect";
+import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(req, {params}) {
 
     const data = await dbConnect('products').find({}).toArray();
 
-    return Response.json(data)
+    console.log(data);
+    return NextResponse.json(data)
 }
 
 export async function POST(req) {

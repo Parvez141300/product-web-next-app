@@ -5,9 +5,12 @@ import Button from "../Button/Button";
 import ThemeToggle from "./shared/ThemeToggle";
 import { usePathname } from "next/navigation";
 import LoginButton from "../LoginButton";
+import { useSession } from "next-auth/react";
 
 const NavBar = () => {
   const pathname = usePathname();
+  const session = useSession();
+
   const links = (
     <>
       <li>
@@ -17,7 +20,7 @@ const NavBar = () => {
         <Link href={"/products"}>Products</Link>
       </li>
       <li>
-        <Link href={'/user-dashboard'}>Dashboard</Link>
+        <Link href={"/user-dashboard"}>Dashboard</Link>
       </li>
     </>
   );
@@ -65,17 +68,18 @@ const NavBar = () => {
         <div className="navbar-end gap-2">
           {/* theme toggle */}
           <ThemeToggle></ThemeToggle>
-          {/* authentication links */}
-          <LoginButton></LoginButton>
-          <Link href={"/register"}>
-            <Button className={"btn-primary rounded-lg"}>Register</Button>
-          </Link>
+          <div className="flex items-center gap-2">
+            {/* authentication links */}
+            <LoginButton></LoginButton>
+            <Link href={"/register"}>
+              <Button className={"btn-primary rounded-lg"}>Register</Button>
+            </Link>
+          </div>
         </div>
       </div>
     );
-  }
-  else{
-    return <></>
+  } else {
+    return <></>;
   }
 };
 

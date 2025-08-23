@@ -1,16 +1,26 @@
 import React from "react";
 import ProductCard from "./shared/ProductCard";
+// export const dynamic = "force-dynamic";
+
 
 async function getProducts() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/items`, {
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error("Failed to fetch");
-  return res.json();
+  try{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/items`, {
+      cache: "no-store",
+    });
+    // console.log(await res.json());
+    return res.json();
+  }
+  catch(error){
+    console.log(error);
+  }
+  // if (!res.ok) throw new Error("Failed to fetch");
+  
 }
 
 const Products = async () => {
   const products = await getProducts();
+  console.log(products);
 
   return (
     <div className="space-y-5 w-11/12 mx-auto my-8">

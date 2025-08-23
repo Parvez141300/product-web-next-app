@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "../shared/ProductCard";
+// export const dynamic = "force-dynamic";
 
 async function getSingleProduct(id) {
   const res = await fetch(
@@ -10,11 +11,16 @@ async function getSingleProduct(id) {
   return res.json();
 }
 async function getProducts(id) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/items`, {
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error("Failed to fetch product");
-  return res.json();
+  try{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/items`, {
+      cache: "no-store",
+    });
+    // if (!res.ok) throw new Error("Failed to fetch product");
+    return res.json();
+  }
+  catch(error){
+    console.log(error);
+  }
 }
 
 const ProductDetails = async ({ params }) => {
